@@ -2,7 +2,6 @@
 
 **EarthquakeNav** is an app that detects nearby earthquakes and helps users navigate to the safest evacuation spots using real-time data and intelligent scoring.
 
----
 
 ## 📌 Motivation
 
@@ -16,7 +15,6 @@ While modern smartphones often notify users when earthquakes occur, they don’t
 
 **EarthquakeNav** answers that question by combining earthquake detection, place search, and smart safety evaluation.
 
----
 
 ## ⚙️ Features, Technologies, and Architecture
 
@@ -46,12 +44,10 @@ While modern smartphones often notify users when earthquakes occur, they don’t
 4. **Calculate Safety Score**  
    For each candidate location, a **safety score** is calculated using a formula inspired by the **Gaussian distribution**:
 
-   \[
-   \text{Safety Score} = 1 - e^{-\frac{(\text{distance to epicenter})^2}{2\sigma^2}}
-   \]
+   Safety Score = 1 - exp(-(distance_to_epicenter^2) / (2 * sigma^2))
 
    Where:  
-   - \( \sigma = \text{magnitude} \times 5 \)  
+   - sigma = magnitude x 5
    - Higher score = safer location  
    - Closer to 1 → safer | Closer to 0 → riskier
 
@@ -67,7 +63,6 @@ While modern smartphones often notify users when earthquakes occur, they don’t
 7. **Navigation**  
    When a user selects a location, the app opens **Google Maps** with directions from the user’s current location to that evacuation spot.
 
----
 
 ## 🚀 Future Work / Improvements
 
@@ -82,7 +77,6 @@ This is the first version, and there are many ways to grow:
 
 All updates and improvements will be shared on the [https://github.com/elmarismayilov/earthquakenav].
 
----
 
 ## 🤝 Contact
 
