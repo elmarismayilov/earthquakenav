@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Nav</title>
+</head>
+<body>
+    <h1>Earthquake Safety Report</h1>
+
+    {% if status == 'no_quakes' %}
+        <p>{{ message }}</p>
+    {% else %}
+        <p><strong>Your location:</strong> {{ user_location.lat }}, {{ user_location.lon }}</p>
+        <p><strong>Strongest quake:</strong> Magnitude {{ magnitude }} near {{ epicenter.place }}</p>
+        <h2>Suggested Evacuation Spots:</h2>
+        <ol>
+        {% for spot in safe_places %}
+            <li>
+            <strong>{{ spot.place.name }}</strong> ({{ spot.zone | title }} Zone)<br>
+            Lat: {{ spot.place.lat }}, Lon: {{ spot.place.lon }}<br>
+            Distance to you: {{ spot.dist_to_user }} km<br>
+            Safety Score: {{ spot.safety_score|floatformat:2 }}
+            <br>
+            <a target="_blank"
+                href="https://www.google.com/maps/dir/?api=1&destination={{ spot.place.lat }},{{ spot.place.lon }}">
+                Navigate
+            </a>
+            </li>
+        {% endfor %}
+        </ol>
+    {% endif %}
+</body>
+</html>
